@@ -1,0 +1,22 @@
+#!/bin/bash
+
+echo "Enter your commit message and press [ENTER]: "
+
+# Save user input to $message
+read message
+
+# Keep asking if $message is blank
+while [ ${#message} == 0 ]; do
+	echo "Commit message cannot blank. Press enter again: "
+	read message
+done
+
+# Run Git add, commit and push
+echo -e "\nGit: Adding..."
+git add .
+echo -e "\nGit: Committing..."
+git commit -a -m "$message"
+echo -e "\nGit: Pushing..."
+git push origin master
+
+echo -e "\nDone!!!"
